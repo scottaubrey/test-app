@@ -20,12 +20,12 @@ jobs:
         id: trunkver
         uses: crftd-tech/trunkver@main
         with:
-          prerelease: ${{ github.ref == 'refs/heads/master' && 'false' || 'true' }}
+          prerelease: ${{ github.ref == 'refs/heads/main' && 'false' || 'true' }}
   build-and-push:
     needs: [generate-version]
     runs-on: ubuntu-latest
     env:
-      IMAGE_TAG: ${{ github.ref == 'refs/heads/master' && needs.generate-version.outputs.trunkver }}
+      IMAGE_TAG: ${{ needs.generate-version.outputs.trunkver }}
     steps:
       - uses: actions/checkout@v4
       - name: Set up QEMU
