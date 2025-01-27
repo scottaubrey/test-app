@@ -45,7 +45,7 @@ jobs:
           load: false
           platforms: linux/amd64,linux/arm64
           build-args: |
-            git_rev=${{ github.sha }}
+            GIT_REV=${{ github.sha }}
           tags: |
             ${{ env.IMAGE_REPO }}:${{ github.sha }}
             ${{ env.IMAGE_REPO }}:${{ env.IMAGE_TAG }}
